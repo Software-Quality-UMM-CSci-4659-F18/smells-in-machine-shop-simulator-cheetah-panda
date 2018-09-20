@@ -15,6 +15,23 @@ class Machine {
         jobQ = new LinkedQueue();
     }
 
+    public int jobReady() {
+        // wait over, ready for new job
+        if (jobQ.isEmpty()) // no waiting job
+            return(MachineShopSimulator.getLargeTime());
+        else {// take job off the queue and work on it
+            runJob();
+            int t = activeJob.removeNextTask();
+            return MachineShopSimulator.getTimeNow() + t;
+        }
+    }
+
+    public void runJob() {
+        activeJob = (Job)jobQ.remove();
+        totalWait = totalWait + MachineShopSimulator.getTimeNow() - activeJob.getArrivalTime();
+        numTasks++;
+    }
+
     public LinkedQueue getJobQ() {
         return jobQ;
     }
