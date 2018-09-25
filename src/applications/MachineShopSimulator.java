@@ -52,6 +52,7 @@ public class MachineShopSimulator {
         Job lastJob = null;
         if (machine[theMachine].getActiveJob() == null) {// in idle or change-over
                                                     // state
+            //jobReady returns time it took to finish job
             eList.setFinishTime(theMachine, machine[theMachine].jobReady());
 
         } else {// task has just finished on machine[theMachine]

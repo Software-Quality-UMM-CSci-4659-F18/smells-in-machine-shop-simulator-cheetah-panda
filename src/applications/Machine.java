@@ -14,7 +14,9 @@ class Machine {
     Machine() {
         jobQ = new LinkedQueue();
     }
-
+    // jobReady checks to see if there is a job in the queue
+    // and if there is, goes to runJob() and returns time
+    // it took to finish
     public int jobReady() {
         // wait over, ready for new job
         if (jobQ.isEmpty()) // no waiting job
@@ -25,7 +27,9 @@ class Machine {
             return MachineShopSimulator.getTimeNow() + t;
         }
     }
-
+    // runJob removes the current job frome the queue
+    // and increments totalWait by the timeNow subtracted
+    // by the arrival time
     public void runJob() {
         activeJob = (Job)jobQ.remove();
         totalWait = totalWait + MachineShopSimulator.getTimeNow() - activeJob.getArrivalTime();
