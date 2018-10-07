@@ -27,7 +27,7 @@ class Machine {
             return MachineShopSimulator.getTimeNow() + t;
         }
     }
-    // runJob removes the current job frome the queue
+    // runJob removes the current job from the queue
     // and increments totalWait by the timeNow subtracted
     // by the arrival time
     public void runJob() {
@@ -36,8 +36,8 @@ class Machine {
         numTasks++;
     }
 
-    public LinkedQueue getJobQ() {
-        return jobQ;
+    public void addToJobQ(Job theJob){
+        jobQ.put(theJob);
     }
 
     public int getChangeTime() {
@@ -52,16 +52,8 @@ class Machine {
         return totalWait;
     }
 
-    public void setTotalWait(int totalWait) {
-        this.totalWait = totalWait;
-    }
-
     public int getNumTasks() {
         return numTasks;
-    }
-
-    public void setNumTasks(int numTasks) {
-        this.numTasks = numTasks;
     }
 
     public Job getActiveJob() {

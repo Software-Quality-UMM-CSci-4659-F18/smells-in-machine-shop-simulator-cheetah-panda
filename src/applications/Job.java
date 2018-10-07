@@ -16,13 +16,10 @@ class Job {
         // length and arrivalTime have default value 0
     }
 
-
-
     public int getTaskMachine() {
         int[] i = (int[])taskQ.getFrontElement();
         return i[0];
     }
-
 
     public void addTask(int theMachine, int theTime) {
         int[] task = {theMachine, theTime};
