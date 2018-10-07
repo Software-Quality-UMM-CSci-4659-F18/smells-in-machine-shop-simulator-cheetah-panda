@@ -82,8 +82,8 @@ public class MachineShopSimulator {
             // create the job
             theJob = new Job(i);
             for (int j = 1; j <= tasks; j++) {
-                int theMachine = specification.getJobSpecifications(i).getSpecificationsForTasks()[2*(j-1)+1];
-                int theTaskTime = specification.getJobSpecifications(i).getSpecificationsForTasks()[2*(j-1)+2];
+                int theMachine = specification.getJobSpecificationTasks(i)[2*(j-1)+1];
+                int theTaskTime = specification.getJobSpecificationTasks(i)[2*(j-1)+2];
                 if (j == 1)
                     firstMachine = theMachine; // job's first machine
                 theJob.addTask(theMachine, theTaskTime); // add to
@@ -100,7 +100,7 @@ public class MachineShopSimulator {
             machine[i] = new Machine();
     }
 
-    /** load first jobs onto each machine
+    /** load first jobs onto each machineintially
      * @param specification*/
     static void startShop(SimulationSpecification specification) {
         // Move this to startShop when ready
