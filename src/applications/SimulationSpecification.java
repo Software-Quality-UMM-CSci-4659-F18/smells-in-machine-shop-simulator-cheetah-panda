@@ -44,6 +44,10 @@ public class SimulationSpecification {
         return jobSpecifications[jobNumber];
     }
 
+    public int[] getJobSpecificationTasks(int jobNumber) {
+        return jobSpecifications[jobNumber].getSpecificationsForTasks();
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

@@ -16,16 +16,22 @@ class Job {
         // length and arrivalTime have default value 0
     }
 
-    // other methods
+    public int getTaskMachine() {
+        int[] i = (int[])taskQ.getFrontElement();
+        return i[0];
+    }
+
     public void addTask(int theMachine, int theTime) {
-        getTaskQ().put(new Task(theMachine, theTime));
+        int[] task = {theMachine, theTime};
+        getTaskQ().put(task);
     }
 
     /**
      * remove next task of job and return its time also update length
      */
     public int removeNextTask() {
-        int theTime = ((Task) getTaskQ().remove()).getTime();
+        int[] task = (int[])taskQ.remove();
+        int theTime = task[1];
         length = getLength() + theTime;
         return theTime;
     }
